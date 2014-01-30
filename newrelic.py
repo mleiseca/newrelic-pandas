@@ -112,9 +112,9 @@ class NewRelic:
 
                     # [{'begin': u'2013-11-10T22:00:00Z', 
                     #   'end': u'2013-11-10T22:06:00Z', 
-                    #   'name': 'Database/order_item/select',
-                    #   'app': 'RFT_POLL', 
-                    #   'agent_id': 1032194, 
+                    #   'name': 'Database/sometable/select',
+                    #   'app': 'APPNAME', 
+                    #   'agent_id': 12343, 
                     #   'call_count': 711.6},
                     data_for_frame.append(cleaned_data)
 
@@ -170,9 +170,9 @@ class NewRelic:
         metrics          = self._fetch_metrics_for_app(app_id)
 
         # table_operations looks like this:
-        # {'attribute': ['select'], 
-        #  'order_hub_alert_opt_out': ['select'],
-        #  'rft_work_request': ['insert', 'select', 'delete']
+        # {'tabl1': ['select'], 
+        #  'table2': ['select'],
+        #  'table3': ['insert', 'select', 'delete']
         table_operations = self._parse_table_operations(metrics)
                       
         print ' - {0} tables'.format(len(table_operations.keys()))
@@ -205,9 +205,9 @@ class NewRelic:
         # metric_data looks like this:
         # [{'begin': u'2013-11-10T22:00:00Z', 
         #   'end': u'2013-11-10T22:06:00Z', 
-        #   'name': 'Database/order_item/select',
-        #   'app': 'RFT_POLL', 
-        #   'agent_id': 1032194, 
+        #   'name': 'Database/some_table/select',
+        #   'app': 'APPNAME', 
+        #   'agent_id': 12345, 
         #   'call_count': 711.6},
         return json.loads(urlopen(r).read())
 #        return metric_data
